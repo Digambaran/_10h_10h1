@@ -4,5 +4,6 @@
   "language": "nodejs",
   "start": "node index.js",
   "build": "npm run build",
-  "postPull": "npm i"
+  "postPull": "npm i",
+  "name": "addTodo"
 }
