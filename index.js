@@ -3,14 +3,14 @@ import path from "path";
 import { getDB, getBody, sendResponse } from "./utils.js";
 
 // Change the sdk import to npm (currently for testing local path is given)
-import { functions } from "../../../node-blox-sdk/index.js";
+// import { functions } from "../../../node-blox-sdk/index.js";
 
 /**
  * Add todo request hanlder
  * @param {*} req
  * @param {*} res
  */
-const addTodos = async (req, res) => {
+const addTodo = async (req, res) => {
   try {
     const DB_FILE = path.resolve(process.env.DB_FILE_PATH);
     const inmemDB = getDB(DB_FILE);
@@ -29,7 +29,8 @@ const addTodos = async (req, res) => {
   }
 };
 
+export default { addTodo }
 /**
  * Run the function using node-blox-sdk
  */
-functions.run(addTodos);
+// functions.run(addTodo);
