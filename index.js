@@ -1,3 +1,4 @@
+import "./dotenv.js";
 import fs from "fs";
 import path from "path";
 import { getDB, getBody, sendResponse } from "./utils.js";
