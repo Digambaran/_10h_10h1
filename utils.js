@@ -58,7 +58,13 @@ export const getDB = (dbFilePath) => {
  * @param {*} type
  */
 export const sendResponse = (res, code, data, type = "application/json") => {
-  res.writeHead(code, "Content-Type", type);
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, DELETE",
+    "Content-Type": type,
+  };
+
+  res.writeHead(code, headers);
   res.write(JSON.stringify(data));
   res.end();
 };
