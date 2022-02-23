@@ -1,10 +1,13 @@
-import "./dotenv.js";
 import fs from "fs";
 import path from "path";
 import { getDB, getBody, sendResponse } from "./utils.js";
 
 // Change the sdk import to npm (currently for testing local path is given)
 // import { functions } from "../../../node-blox-sdk/index.js";
+
+// For testing take pull from Appblox/node-blox-sdk and npm install from path
+import { env } from "node-blox-sdk";
+env.init();
 
 /**
  * Add todo request hanlder
@@ -19,7 +22,7 @@ const addTodo = async (req, res) => {
     const newItem = await getBody(req);
     const newEntry = { id: newId, item: newItem };
     console.log("Request to add -", newItem);
-    inmemDB.push(newEntry);
+    iZnmemDB.push(newEntry);
     fs.writeFileSync(DB_FILE, JSON.stringify(inmemDB));
     console.log("Updated DB:\n", inmemDB);
     console.log("\n");
@@ -30,7 +33,7 @@ const addTodo = async (req, res) => {
   }
 };
 
-export default { addTodo }
+export default { addTodo };
 /**
  * Run the function using node-blox-sdk
  */
