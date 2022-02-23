@@ -22,14 +22,14 @@ const addTodo = async (req, res) => {
     const newItem = await getBody(req);
     const newEntry = { id: newId, item: newItem };
     console.log("Request to add -", newItem);
-    iZnmemDB.push(newEntry);
+    inmemDB.push(newEntry);
     fs.writeFileSync(DB_FILE, JSON.stringify(inmemDB));
     console.log("Updated DB:\n", inmemDB);
     console.log("\n");
     sendResponse(res, 200, newEntry || "[]");
   } catch (e) {
     console.log(e);
-    sendResponse(res, 500, { status: "failed" });
+    sendResponse(res, 500, { status: "failed", errMsg: e.message});
   }
 };
 
